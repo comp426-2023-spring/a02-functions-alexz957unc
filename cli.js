@@ -16,9 +16,10 @@ const help_text = `Usage: galosh.js [options] -[n|s] LATITUDE -[e|w] LONGITUDE -
 
 const help = args.h;
 const json = args.j;
-const timezone = args.z || moment.tz.guess();
+
 const latitude = args.n || args.s * -1;
 const longitude = args.e || args.w * -1;
+const timezone = args.z || moment.tz.guess();
 
 var num_day;
 if (args.d === undefined) {
