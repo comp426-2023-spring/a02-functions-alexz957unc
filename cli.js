@@ -15,10 +15,11 @@ const help_text = `Usage: galosh.js [options] -[n|s] LATITUDE -[e|w] LONGITUDE -
     -j            Echo pretty JSON from open-meteo API and exit.`
 
 const help = args.h;
+const json = args.j;
 const timezone = args.z || moment.tz.guess();
 const latitude = args.n || args.s * -1;
 const longitude = args.e || args.w * -1;
-const json = args.j;
+
 var day;
 if (args.d === undefined) {
 	day = 1;
@@ -43,8 +44,8 @@ function weather(data) {
         date_log = " tomorrow.";
 	}
 
-	const precip = data.daily.precipitation_hours;	
-	if (precip[day] >= 1) {
+	const precipitation = data.daily.precipitation_hours;	
+	if (precipitation[day] >= 1) {
 		console.log("You might need your galoshes" + date_log);
 	} else {
 		console.log("You will not need your galoshes" + date_log);
