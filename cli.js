@@ -20,13 +20,13 @@ const timezone = args.z || moment.tz.guess();
 const latitude = args.n || args.s * -1;
 const longitude = args.e || args.w * -1;
 
-var day;
+var num_day;
 if (args.d === undefined) {
-	day = 1;
+	num_day = 1;
 } else if (args.d === 0) {
-	day = 0;
+	num_day = 0;
 } else {
-	day = args.d;
+	num_day = args.d;
 }
 
 const URL = 'https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&daily=precipitation_hours&current_weather=true&timezone=' + timezone;
@@ -35,17 +35,17 @@ const data = await response.json();
 
 function weather(data) {
 	var date_log;
-	if (day == 0) {
+	if (num_day == 0) {
 		date_log = " today.";
-	} else if (day > 1) {
-		date_log = ` in ${day} days.`;
+	} else if (num_day > 1) {
+		date_log = ` in ${num_day} days.`;
 	} else {
 		
         date_log = " tomorrow.";
 	}
 
 	const precipitation = data.daily.precipitation_hours;	
-	if (precipitation[day] >= 1) {
+	if (precipitation[num_day] >= 1) {
 		console.log("You might need your galoshes" + date_log);
 	} else {
 		console.log("You will not need your galoshes" + date_log);
