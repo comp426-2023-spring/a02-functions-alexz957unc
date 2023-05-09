@@ -34,7 +34,7 @@ const URL = 'https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&lo
 const response = await fetch(URL);
 const data = await response.json();
 
-function weather(data) {
+function weather_forecast(data) {
 	var date;
 	if (num_day == 0) {
 		date = " today.";
@@ -60,5 +60,5 @@ if (help) {
 	console.log(data);
 	process.exit(0);
 } else {
-	weather(data);
+	weather_forecast(data);
 }
