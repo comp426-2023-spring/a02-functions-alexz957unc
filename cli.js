@@ -35,21 +35,21 @@ const response = await fetch(URL);
 const data = await response.json();
 
 function weather(data) {
-	var date_log;
+	var date;
 	if (num_day == 0) {
-		date_log = " today.";
+		date = " today.";
 	} else if (num_day > 1) {
-		date_log = ` in ${num_day} days.`;
+		date = ` in ${num_day} days.`;
 	} else {
 		
-        date_log = " tomorrow.";
+        date = " tomorrow.";
 	}
 
 	const precipitation = data.daily.precipitation_hours;	
 	if (precipitation[num_day] >= 1) {
-		console.log("You might need your galoshes" + date_log);
+		console.log("You might need your galoshes" + date);
 	} else {
-		console.log("You will not need your galoshes" + date_log);
+		console.log("You will not need your galoshes" + date);
 	}
 }
 
