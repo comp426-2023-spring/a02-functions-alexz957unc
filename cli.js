@@ -17,7 +17,7 @@ const help_text = `Usage: galosh.js [options] -[n|s] LATITUDE -[e|w] LONGITUDE -
 const help = args.h;
 const timezone = args.z || moment.tz.guess();
 const latitude = args.n || args.s * -1;
-const lg = args.e || args.w * -1;
+const longitude = args.e || args.w * -1;
 const json = args.j;
 var day;
 if (args.d === undefined) {
@@ -28,7 +28,7 @@ if (args.d === undefined) {
 	day = args.d;
 }
 
-const URL = 'https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + lg + '&daily=precipitation_hours&current_weather=true&timezone=' + timezone;
+const URL = 'https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&daily=precipitation_hours&current_weather=true&timezone=' + timezone;
 const response = await fetch(URL);
 const data = await response.json();
 
